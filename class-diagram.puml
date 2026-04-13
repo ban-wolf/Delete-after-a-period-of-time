@@ -1,0 +1,39 @@
+@startuml
+skinparam defaultFontName Microsoft YaHei
+skinparam shadowing false
+
+class 图书 {
+  +图书编号: String
+  +书名: String
+  +作者: String
+  +出版社: String
+  +分类: String
+  +库存数量: int
+  +可借状态: boolean
+  +查询图书()
+  +更新库存()
+}
+
+class 用户 {
+  +用户编号: String
+  +姓名: String
+  +学号: String
+  +联系方式: String
+  +搜索图书()
+  +借阅图书()
+  +归还图书()
+}
+
+class 借阅记录 {
+  +记录编号: String
+  +借阅日期: Date
+  +应还日期: Date
+  +归还日期: Date
+  +借阅状态: String
+  +生成记录()
+  +完成归还()
+}
+
+用户 "1" -- "0..*" 借阅记录 : 产生
+图书 "1" -- "0..*" 借阅记录 : 对应
+@enduml
